@@ -1,6 +1,8 @@
-require "minitest/autorun"
+require "minitest"
 require_relative 'jungle_beat'
 
+
+# Test if things still work with an empty list
 class JungleBeatTest < Minitest::Test
   def test_takes_arguments_properly
     jb = JungleBeat.new("deep dep dep deep")

@@ -35,13 +35,14 @@ class JungleBeat
   def play
     count = 0
     traverse do |current|
-      # `say -r 500 -v Boing "#{current.data}"`
+      `say -r 500 -v Boing "#{current.data}"`
       count += 1
     end
     count
   end
 
   def append(words)
+    # make it work with empty list
     count = 0
     words.split.each do |word|
       traverse.link = Node.new(word)
@@ -56,7 +57,7 @@ class JungleBeat
       @head = Node.new(word, @head)
       count += 1
     end
-    count
+    words.split.count
   end
 
   def insert(index, words)
@@ -89,6 +90,7 @@ class JungleBeat
     end
     output = []
     amount.times do
+      # try using traverse_to
       current = @head
       while current.link.link
         current = current.link
@@ -120,7 +122,7 @@ class JungleBeat
   end
 
   def all
-    return "The list is empty" if !@head
+    return "The list is empty" if @head.nil?
     output = ""
     traverse do |current|
       output << "#{current.data} "
@@ -128,3 +130,8 @@ class JungleBeat
     output.chop
   end
 end
+
+# comments
+# liked edge-case feedback
+# keep methods short (8-ish lines)
+# liked calculating count instead of holding it as a variable
